@@ -39,7 +39,7 @@ class NumberGame
   	if @user_answer == computed_answer
   	  puts "Super! you are a Math brainee..!!!"
   	else
-  	  puts "Wrong answer! stop roaming with amegos and start studying..!!!"
+  	  puts "Wrong answer..!!"
   	  puts "correct answer is #{computed_answer}"
   	end
   end
@@ -55,9 +55,8 @@ class NumberGame
         puts counter
       end
       counter += 1
-      break if counter > @dig_count*5
+      break -> {compute_operation_cmp_ans}.call if counter > @dig_count*5
     end
-    compute_operation_cmp_ans
     exit
   end
 
