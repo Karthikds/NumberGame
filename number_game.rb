@@ -4,7 +4,7 @@ class NumberGame
 	@selected_operator = nil
 	@dig_count = 0
 	@numbers = []
-	@user_answer = []
+	@user_answer = 0
   end
 
   def start_game
@@ -21,7 +21,9 @@ class NumberGame
 
   def play_game
   	@numbers = get_numbers
-	puts "what is the value of #{@numbers[0]} * #{@numbers[1]}"
+	puts "what is the value of #{@numbers[0]} #{@selected_operator} #{@numbers[1]}"
+  puts "you got #{@dig_count*5} seconds"
+  puts start_timer
 	@user_answer = gets.chomp.to_i
 	compute_operation_cmp_ans
   end
@@ -42,6 +44,22 @@ class NumberGame
   	end
   end
 
-  NumberGame.new.start_game
+  #timer
+  def start_timer
+    now = Time.now
+    counter = 1
+    loop do
+      if Time.now < now + counter
+        next
+      else
+        puts counter
+      end
+      counter += 1
+      break if counter > @dig_count*5
+    end
+    compute_operation_cmp_ans
+    exit
+  end
 
+  NumberGame.new.start_game
 end
