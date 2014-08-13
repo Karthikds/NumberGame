@@ -12,6 +12,7 @@ class NumberGame
 	play_game
   end
 
+private
   def instruct_users
   	puts "what operation( +, -, *, /) you want to perform"
   	@selected_operator = gets.chomp
@@ -22,8 +23,8 @@ class NumberGame
   def play_game
   	@numbers = get_numbers
 	puts "what is the value of #{@numbers[0]} #{@selected_operator} #{@numbers[1]}"
-  puts "you got #{@dig_count*5} seconds"
-  puts start_timer
+  # puts "you got #{@dig_count*5} seconds"
+  # puts start_timer
 	@user_answer = gets.chomp.to_i
 	compute_operation_cmp_ans
   end
