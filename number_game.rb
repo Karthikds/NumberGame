@@ -22,11 +22,10 @@ private
 
   def play_game
   	@numbers = get_numbers
-	puts "what is the value of #{@numbers[0]} #{@selected_operator} #{@numbers[1]}"
-  # puts "you got #{@dig_count*5} seconds"
-  # puts start_timer
-	@user_answer = gets.chomp.to_i
-	compute_operation_cmp_ans
+  	puts "what is the value of #{@numbers[0]} #{@selected_operator} #{@numbers[1]}"
+    puts "you got #{@dig_count*5} seconds"
+    start_timer
+    compute_operation_cmp_ans 
   end
 	
   def get_numbers
@@ -40,7 +39,7 @@ private
   	if @user_answer == computed_answer
   	  puts "Super! you are a Math brainee..!!!"
   	else
-  	  puts "Wrong answer..!!"
+  	  puts "Wrong answer..!!" 
   	  puts "correct answer is #{computed_answer}"
   	end
   end
@@ -53,12 +52,15 @@ private
       if Time.now < now + counter
         next
       else
-        puts counter
+        print '.'
       end
       counter += 1
-      break -> {compute_operation_cmp_ans}.call if counter > @dig_count*5
+      if counter > @dig_count*5
+        puts "\nHit enter to find the answer"
+        break 
+      end
     end
-    exit
+    @user_answer = gets.chomp.to_i
   end
 
   NumberGame.new.start_game
