@@ -1,4 +1,4 @@
-# Number Game in Ruby
+# Ruby - Number Game
 By [Karthik D S] (https://github.com/Karthikds)
 
 Test your math basics skill with this game.
